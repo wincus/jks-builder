@@ -22,11 +22,11 @@ initca: test dirs serial index.txt crlnumber secret
 	$(OPENSSL) req -batch -config openssl.conf -days 3650 -x509 -newkey rsa:2048 -out pems/cacert.pem -outform PEM -keyout keys/cakey.pem -passout file:secret -subj "/OU=OrgName LAB/O=Organization/L=MZA/ST=MZA/C=AR/CN=CA Authority"
 
 test:
-	$(info It should not be a ca created ...)
+	$(info it shouldn't be a ca present ...)
 	@test ! -f pems/cacert.pem
 
 itest:
-	$(info It should be a ca created ...)
+	$(info it should be a ca present ...)
 	@test -f pems/cacert.pem
 
 secret:
